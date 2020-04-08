@@ -35,7 +35,8 @@ class ChatViewController: UIViewController {
     func loadMessages() {
         
         
-        db.collection(K.FStore.collectionName).addSnapshotListener { (querysnapshot, error) in
+        db.collection(K.FStore.collectionName).order(by: K.FStore.dateField).addSnapshotListener { (querysnapshot, error) in
+            
             self.messages = []
             if let e = error {
                 print("There was an issue retrieving data from Firestore, \(e)")
@@ -63,7 +64,8 @@ class ChatViewController: UIViewController {
         if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
             db.collection(K.FStore.collectionName).addDocument(data: [
                 K.FStore.senderField: messageSender,
-                K.FStore.bodyField: messageBody
+                K.FStore.bodyField: messageBody,
+                K.FStore.dateField: Date().timeIntervalSince1970
             ]) { (error) in
                 if let e = error {
                     print("issue saing data to fireStore, \(e)")
