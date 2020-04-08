@@ -18,13 +18,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6iX-xS-OBv">
-                        <rect key="frame" x="10" y="10" width="395" height="81"/>
+                        <rect key="frame" x="10" y="10" width="395" height="40"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YouAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="hUK-0e-nan">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9ar-GP-K09"/>
+                                    <constraint firstAttribute="width" constant="40" id="h2I-6G-tfA"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-dD-ykg">
-                                <rect key="frame" x="0.0" y="0.0" width="335" height="81"/>
+                                <rect key="frame" x="60" y="0.0" width="275" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJm-wb-bJO">
-                                        <rect key="frame" x="10" y="10" width="315" height="61"/>
+                                        <rect key="frame" x="10" y="10" width="255" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="0.99998790029999995" blue="0.99999219179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -39,7 +46,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="sIZ-x0-WHv">
-                                <rect key="frame" x="355" y="0.0" width="40" height="81"/>
+                                <rect key="frame" x="355" y="0.0" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OK0-Ox-dpm"/>
                                     <constraint firstAttribute="width" constant="40" id="uIO-ib-1Qy"/>
@@ -57,6 +64,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="leftImageView" destination="hUK-0e-nan" id="sxs-a5-Xjj"/>
                 <outlet property="messageBubble" destination="Y7s-dD-ykg" id="w6B-a7-u1f"/>
                 <outlet property="messageLabel" destination="dJm-wb-bJO" id="A9F-HC-Trd"/>
                 <outlet property="rightImageView" destination="sIZ-x0-WHv" id="COk-Co-d0S"/>
@@ -66,6 +74,7 @@
     </objects>
     <resources>
         <image name="MeAvatar" width="36" height="36"/>
+        <image name="YouAvatar" width="36" height="36"/>
         <namedColor name="BrandPurple">
             <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
