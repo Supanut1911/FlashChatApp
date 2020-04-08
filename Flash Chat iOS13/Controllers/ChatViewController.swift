@@ -20,6 +20,8 @@ class ChatViewController: UIViewController {
         Message(sender: "1@2.com", body: "What up"),
     ]
     
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -34,6 +36,20 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
+        //เช็คก่อนว่า message ไม่ nil และ ผู้ส่งมี emil
+        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
+            db.collection(K.FStore.collectionName).addDocument(data: [
+                K.FStore.senderField: messageSender,
+                K.FStore.bodyField: messageBody
+            ]) { (error) in
+                if let e = error {
+                    print("issue saing data to fireStore, \(e)")
+                } else {
+                    print("Successfully save data")
+                }
+            }
+        }
+        
     }
     
     @IBAction func logoutpress(_ sender: UIBarButtonItem) {
